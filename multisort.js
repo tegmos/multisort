@@ -59,7 +59,6 @@
     throw "Improper input for comparator!"
   };
 
-  // Functional evaluators don't need any transformation, and can't have inverted order.
   var makeFunctionalEvaluator = function(input) {
     return {
       func: input,
@@ -131,7 +130,7 @@
 
 
   var isFunction = function(input) {
-    return typeof input === "function";
+    return (typeof input === "object" && typeof input.func === "function" && typeof input.invert === "boolean");
   };
 
   var isNumber = function(input) {
